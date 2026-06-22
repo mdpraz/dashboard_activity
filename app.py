@@ -351,9 +351,9 @@ try:
 except Exception as e:
     st.error(f"Gagal memuat data: {e}"); st.stop()
 
-ALL_DATES    = sorted(df["date"].unique())
-ALL_TEAMS    = sorted(df["team"].unique())
-ALL_SEGMENTS = sorted(df["segment"].unique())
+ALL_DATES    = sorted(df["date"].dropna().unique())
+ALL_TEAMS    = sorted(df["team"].dropna().astype(str).unique())
+ALL_SEGMENTS = sorted(df["segment"].dropna().astype(str).unique())
 
 
 def frows(date=None, team=None, segment=None, campaign=None, agent=None):
